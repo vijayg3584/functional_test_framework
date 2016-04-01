@@ -14,7 +14,7 @@ import vijay.functestfrmwrk.exception.VerifyTestException;
  */
 public class TestCaseInfo {
 
-    enum TestResults {
+    private enum TestResults {
 
         PASSED("Passed"),
         FAILED("Failed"),

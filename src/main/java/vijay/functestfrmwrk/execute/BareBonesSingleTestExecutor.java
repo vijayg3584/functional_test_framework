@@ -14,18 +14,17 @@ import static vijay.functestfrmwrk.utility.ConsolePrinter.printMessageToConsole;
  */
 public class BareBonesSingleTestExecutor {
 
-    public static void executeTest(Class clazz) {
+    public static void executeTest(Class<IFunctionalTest> clazz) {
         TestCaseInfo caseInfo = new TestCaseInfo();
         caseInfo.setTestClass(clazz.getName());
         executeTest(caseInfo);
     }
 
-    @SuppressWarnings({"BroadCatchBlock", "TooBroadCatch", "UseSpecificCatch"})
     public static void executeTest(TestCaseInfo testCaseInfo) {
         try {
-            Class klass = Class.forName(testCaseInfo.getTestClass());
+            Class<IFunctionalTest> klass = (Class<IFunctionalTest>) Class.forName(testCaseInfo.getTestClass());
             printMessageToConsole("Klass: " + klass);
-            IFunctionalTest testCase = (IFunctionalTest) klass.newInstance();
+            IFunctionalTest testCase = klass.newInstance();
 
             testCase.prepareTest(testCaseInfo);
 
